@@ -67,11 +67,11 @@ finished
 
 if [ -f app.cr ]; then
   start "Compiling app.cr (using old behaviour, app.cr exists - ignoring shard.yml)"
-    crystal build app.cr --release
+    crystal build app.cr --release --no-debug
   finished
 else
   eval $(parse_yaml shard.yml "shard_")
   start "Compiling src/${shard_name}.cr (auto-detected from shard.yml)"
-    crystal build src/${shard_name}.cr --release -o app
+    crystal build src/${shard_name}.cr --release --no-debug -o app
   finished
 fi
